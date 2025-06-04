@@ -171,7 +171,7 @@
                 <!-- Radio buttons -->
                 <div class="mb-3">
                     <label class="form-label">Estado Civil:</label>
-                    <div class="d-flex flex-wrap gap-4">  <!-- flex-wrap para responsive -->
+                    <div class="d-flex flex-wrap gap-4">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="estado_civil" id="soltero" value="sol">
                             <label class="form-check-label" for="soltero">Soltero</label>
@@ -207,22 +207,26 @@
                             <input type="text" class="form-control">
                         </div>
 
-                        <!--  Regimen matrimonial - Oculto inicialmente (solo visible para casados) -->
-                        <label class="form-label">Régimen matrimonial:</label>
-                        <div class="form-check">
-                            <label for="legal_pais" class="form-label">Legal de su Pais:</label>
-                            <select class="form-select" id="legal_pais" name="legal_pais">
-                                <option value="">-- Legal de su Pais --</option>
-                            </select>
+                        <!-- Régimen matrimonial -->
+                        <div class="mb-3">
+                            <label class="form-label">Régimen matrimonial:</label>
+                            <div class="form-check">
+                                <label for="legal_pais" class="form-label">Legal de su Pais:</label>
+                                <select class="form-select" id="legal_pais" name="legal_pais">
+                                    <option value="">-- Legal de su Pais --</option>
+                                </select>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-label">Separacion de bienes:</label>
+                                <input type="file" class="form-control">
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <label class="form-label">Separacion de bienes:</label>
-                            <input type="file" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div> <!-- Cierre de row mb-3 -->
+                </div> <!-- Cierre de datosConyuge -->
+            </div> <!-- Cierre de card-body -->
+        </div> <!-- Cierre de card mb-4 -->
+
+
 
         <!-- Sección 4: Representacion -->
         <div class="card mb-4">
@@ -293,6 +297,7 @@
                 <div class="d-grid gap-2">  <!-- Ocupa todo el ancho -->
                     <button type="submit" class="btn btn-primary">Enviar Formulario</button>
                 </div>
+
     </form>
 </div>
 
@@ -331,6 +336,7 @@
             datosConyuge.style.display = this.value === 'cas' ? 'block' : 'none';
         });
     });
+
 
     // Mostrar/ocultar datos del representante
     document.querySelectorAll('input[name="actuacion"]').forEach(radio => {
