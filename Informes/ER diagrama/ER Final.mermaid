@@ -1,0 +1,78 @@
+erDiagram
+  INSTRUMENTO_PUBLICO {
+    string numero_protocolo PK
+    date fecha_otorgamiento
+    string lugar_otorgamiento
+    string ID_notario FK
+  }
+  NOTARIO {
+    string ID_notario PK
+    string nombre_apellidos
+    string colegio
+  }
+  ENCABEZAMIENTO {
+    string numero_protocolo FK
+  }
+  COMPARECENCIA {
+    string numero_protocolo FK
+    string ID_persona FK
+    string rol
+  }
+  PERSONA_FISICA {
+    string ID_persona PK
+    string nombre_apellidos
+    date fecha_nacimiento
+    string estado_civil
+    string profesion
+    string domicilio
+    string nacionalidad
+    string NIF
+  }
+  INTERVENCION {
+    string numero_protocolo FK
+    string ID_representacion FK
+  }
+  REPRESENTACION {
+    string ID_representacion PK
+    string tipo
+    bool veracidad
+    bool vigencia
+    bool suficiencia
+    string ID_representante FK
+    string ID_representado_fisico FK
+    string ID_representado_juridico FK
+  }
+  PERSONA_JURIDICA {
+    string ID_juridica PK
+    string denominacion_social
+    date fecha_constitucion
+    string objeto_social
+    string CNAE
+    string domicilio_social
+  }
+  JUICIO_CAPACIDAD {
+    string ID_juicio PK
+    string numero_protocolo FK
+    string ID_persona FK
+    bool capacidad_natural
+    bool legitimacion
+  }
+  TITULAR_REAL {
+    string ID_juridica FK
+    string ID_persona FK
+  }
+
+  INSTRUMENTO_PUBLICO }|--|| NOTARIO : "autorizado_por"
+  INSTRUMENTO_PUBLICO ||--o| ENCABEZAMIENTO : "tiene"
+  INSTRUMENTO_PUBLICO ||--o{ COMPARECENCIA : "registra"
+  COMPARECENCIA }|--|| PERSONA_FISICA : "compareciente"
+  INSTRUMENTO_PUBLICO ||--o{ INTERVENCION : "contiene"
+  INTERVENCION }|--|| REPRESENTACION : "basada_en"
+  REPRESENTACION }|--|| PERSONA_FISICA : "representante"
+  REPRESENTACION }|--o| PERSONA_FISICA : "representado_fisico"
+  REPRESENTACION }|--o| PERSONA_JURIDICA : "representado_juridico"
+  PERSONA_JURIDICA }|--o{ TITULAR_REAL : "titular_real"
+  TITULAR_REAL }|--|| PERSONA_FISICA : "es"
+  INSTRUMENTO_PUBLICO ||--o{ JUICIO_CAPACIDAD : "incluye"
+  JUICIO_CAPACIDAD }|--|| PERSONA_FISICA : "sobre_persona"
+  JUICIO_CAPACIDAD }|--|| NOTARIO : "verificado_por"
