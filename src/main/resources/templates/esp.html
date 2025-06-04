@@ -349,7 +349,7 @@
     document.querySelectorAll('input[name="actuacion"]').forEach(radio => {
         radio.addEventListener('change', function() {
             const datosPoder = document.getElementById('datosPoder');
-            // Muestra solo si se selecciona un representante
+            // Muestra solo si se selecciona datos de poder
             datosPoder.style.display = this.value === 'rep' ? 'block' : 'none';
         });
     });

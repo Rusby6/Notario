@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    @GetMapping("/español")
+    @GetMapping("/esp")
     public String index1() {
 
-        return "index1";
+        return "esp";
     }
 
-    @GetMapping("/extranjero")
+    @GetMapping("/extr")
     public String index2() {
 
-        return "index2";
+        return "extr";
     }
 }
