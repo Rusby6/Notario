@@ -21,9 +21,12 @@ CREATE TABLE REGIMEN_MATRIMONIAL (
 /*Tabla: PERSONA_FISICA*/
 CREATE TABLE PERSONA_FISICA (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nie VARCHAR(20) UNIQUE,
+    dni VARCHAR(20) UNIQUE, 
     nombre VARCHAR(50) NOT NULL,
     primer_apellido VARCHAR(50) NOT NULL,
     segundo_apellido VARCHAR(50),
+    genero VARCHAR(20),
     fecha_nacimiento DATE NOT NULL,
     profesion VARCHAR(100),
     profesion_riesgo BOOLEAN DEFAULT FALSE,
